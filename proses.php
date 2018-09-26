@@ -8,6 +8,8 @@
 <br>
 	<div class="container">
 		<?php
+		//Di awal baris terdapat kode untuk membuat dan mengecek koneksi database
+		//Kemudian diikuti kode mengambil nilai dari HTTP $_POST yang telah diterima
 			require_once('koneksi.php');
 
 			$koneksiObj = new Koneksi();
@@ -21,7 +23,7 @@
 			$username   = $_POST['username'];
 			$password   = $_POST['password'];
 			$email = $_POST['email'];
-
+		//disini terdapat validasi yang dilakukan yaitu mengecek kesamaan username dan email
 			if($nama=='' || $username=='' || $password=='' || $email==''){
 				echo " isi form dengan lengkap<br>";
 				echo '<a class="btn btn-warning" href="input.php">Kembali</a>';

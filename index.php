@@ -12,7 +12,8 @@
             <hr>
             <a href="input.php" class="btn btn-success">Tambah Data</a>
             <br><br>
-			<table class="table table-striped table-bordered table-hover" id="tb-mahasiswa">
+			<table class="table table-striped table-bordered table-hover" 
+			id="tb-mahasiswa">
 <?
 //tabel yang terdiri dari kolom Nama, Username, Password, Email, Pilihan
 ?>			
@@ -44,9 +45,12 @@
 						$query = "select * from data order by nama";
 						$data = $koneksi->query($query);
 
-// mengecek apakah ada data atau tidak dengan mengakses num_rows dari hasil return query select sebelumnya, dan hasilnya true maka data akan ditampilkan
-// baris kode while($row = $data->fetch_assoc()) berguna untuk perulangan untuk menampilkan data berdasarkan banyaknya data. Kemudian data
-// ditampilkan ke dalam tabel dengan menampilkan masing-masing field dengan cara mengakses array pada variabel $row[‘nama_field’]. Kode di atas
+// mengecek apakah ada data atau tidak dengan mengakses num_rows dari 
+//hasil return query select sebelumnya, dan hasilnya true maka data akan ditampilkan
+// baris kode while($row = $data->fetch_assoc()) berguna untuk perulangan 
+//untuk menampilkan data berdasarkan banyaknya data. Kemudian data
+// ditampilkan ke dalam tabel dengan menampilkan masing-masing field dengan cara
+// mengakses array pada variabel $row[‘nama_field’]. Kode di atas
 //terdapat kode untuk menampilkan tombol edit dan hapus
 						
 						if($data->num_rows <= 0) {

@@ -13,7 +13,7 @@
 		include('koneksi.php');
 
 		if($_GET['id']!=null){
-			$nama = $_GET['id'];
+			$id = $_GET['id'];
 
 			$koneksiObj = new Koneksi();
 			$koneksi = $koneksiObj->getKoneksi();
@@ -22,7 +22,7 @@
 				echo "Gagal Koneksi : ". $koneksi->connect_error;
 			}
 
-			$query = "select * from data";
+			$query = "select * from data where id='$id'";
 			$data = $koneksi->query($query);
 
 		}
@@ -44,36 +44,38 @@
 	
     <div class="panel-body">
 		<form action = "update.php" method="post">
-			<input type="hidden" id="id" name="id" value=""/>
+			<input type="hidden" id="id" name="id" value="<?php echo $id;?>"/>
 			<div class="form-group row">
 				<label for="example-text-input" class="col-2 col-form-label">NAMA</label>
 				<div class="col-3">
-					<input class="form-control" type="text" name="nama" id="nama" value="<?php echo $nama;?>" onkeydown="return testInput(event);" required>
+					<input class="form-control" type="text" name="nama" id="nama" value="<?php echo $nama;?>" onkeydown="return testInput(event);" required oninvalid="this.setCustomValidity('Nama tidak Boleh Kosong')" oninput="setCustomValidity('')">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="example-text-input" class="col-2 col-form-label">USERNAME</label>
 				<div class="col-3">
-					<input class="form-control" type="text" name="username" id="username" value="<?php echo $username;?>">
+					<input class="form-control" type="text" name="username" id="username" value="<?php echo $username;?>" onkeydown="return nospecial(event);" required oninvalid="this.setCustomValidity('Username tidak Boleh Kosong')" oninput="setCustomValidity('')" >
 				</div>
 			</div>
 						
 			<div class="form-group row">
 				<label for="example-text-input" class="col-2 col-form-label">PASSWORD</label>
 				<div class="col-3">
-					<input class="form-control" type="password" name="password" id="password"  value="<?php echo $password;?>">
+					<input class="form-control" type="password" name="password" id="password"  value="<?php echo $password;?>" required oninvalid="this.setCustomValidity('Password tidak Boleh Kosong')" oninput="setCustomValidity('')" >
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="example-text-input" class="col-2 col-form-label">EMAIL</label>
 				<div class="col-3">
-					<input class="form-control" type="email" name="email" id="email" value="<?php echo $email;?>">
+					<input class="form-control" type="email" name="email" id="email" value="<?php echo $email;?>" required oninvalid="this.setCustomValidity('format email salah')" oninput="setCustomValidity('')" >
 				</div>
 			</div>
 			
 			<input class="btn btn-primary" type="submit" value="Simpan">
+			<a href="index.php" class="btn btn-danger"><i class="fa fa-ban"></i> Batal</a>
+
 		</form>
 	</div>
 
