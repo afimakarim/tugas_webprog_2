@@ -22,7 +22,7 @@
 			$password   = $_POST['password'];
 			$email = $_POST['email'];
 
-			$query = "update data set nama = '$nama', username = '$username', email = '$email' where id = '$id'";
+			$query = "update data set nama = '$nama', username = '$username', password ='$password', email = '$email' where id = '$id'";
 					
 
 			if($nama=='' || $username=='' || $password=='' || $email==''){
